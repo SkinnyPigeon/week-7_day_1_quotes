@@ -62,8 +62,21 @@ function constantClick( event ) {
 
   var userInput = userQuoteInput.value + ": " + userAuthorInput.value;
 
-  appendQuote( userInput );
-  
+  constantQuote( userInput );
+
+}
+
+function constantQuote( userInput ) {
+
+    var li = document.createElement( "li" );
+    li.innerText = userInput;
+
+    var ul = document.getElementById( "quote-list" )
+    ul.appendChild( li )
+
+    appendQuote( userInput );
+
+    li.onclick = deleteQuote;
 }
 
 function handleClick( event ) {
@@ -86,7 +99,7 @@ function appendQuote( userInput ) {
 
   var ul = document.getElementById( "quote-list" )
   ul.appendChild( li )
-  cl( li )
+
   li.onclick = deleteQuote;
 }
 
