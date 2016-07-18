@@ -21,15 +21,15 @@ window.onload = function() {
 function main() {
 
   var form = document.getElementById( "quote-form" );
-  // form.onsubmit = function( event ) {
-  //   event.preventDefault();
-  //   handleClick()
 
-    form.onkeyup = function() {
-      handleClick()
-    }
+  form.onkeyup = function() {
+    constantClick()
+  }
 
-// }
+  form.onsubmit = function( event ) {
+    event.preventDefault();
+    handleClick()
+  }
   var quoteArray = [ jeff, steve ];
   var quoteList = document.getElementById('quote-list');
 
@@ -45,9 +45,25 @@ function main() {
     newQuote.appendChild(cite);
     quoteList.appendChild(newQuote);
     newQuote.onclick = deleteQuote;
+  } 
+}
 
-  }
- 
+function deleteLast( event ) {
+  var userInput = ""
+  appendQuote( userInput );
+}
+
+
+function constantClick( event ) {
+
+  var userQuoteInput = document.getElementById( "quote-text-input" );
+
+  var userAuthorInput = document.getElementById( "author-text-input" );
+
+  var userInput = userQuoteInput.value + ": " + userAuthorInput.value;
+
+  appendQuote( userInput );
+  
 }
 
 function handleClick( event ) {
@@ -60,8 +76,8 @@ function handleClick( event ) {
 
   appendQuote( userInput );
 
-  // userQuoteInput.value = '';
-  // userAuthorInput.value = '';  
+  userQuoteInput.value = '';
+  userAuthorInput.value = '';  
 }
 
 function appendQuote( userInput ) {
